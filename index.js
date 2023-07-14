@@ -5,7 +5,7 @@ resultHead = ["Process ID", "Arrival Time", "Burst Time", "Completion Time", "Tu
 var n = 0, processID, arrivalTime, burstTime, completionTime,  turnAroundTime, waitingTime, ganttChart, timeline, index, ready, dupBurstTIme; 
 function displaytq()
 {
-    // var out = document.querySelector("#out");
+    
     var sel = document.querySelector("#algo").value;
     var tq = document.querySelector("#tq");
 
@@ -18,7 +18,7 @@ function displaytq()
         tq.style.display = "none";
     }
 
-    // out.innerText = sel.value;
+    
 }
 
 function getValues()
@@ -31,8 +31,7 @@ function getValues()
     }
     for(var i = 0; i < inputs.length; i++)
     {
-        // console.log(inputs[i]);
-        // console.log(inputs[i].getAttribute('id'));
+        
         if(inputs[i].value === "" && inputs[i].getAttribute('id') != "timequantum")
         {
             alert("Please enter all the details");
@@ -109,16 +108,11 @@ function FCFS()
     {
         if(ready.length == 0 && ind < n && arrivalTime[ind] > t)
         {
+            timeline.push(arrivalTime[ind]);
+            ganttChart.push(-1);
             
-            // if(arrivalTime[ind] > t)
-            // {
-                timeline.push(arrivalTime[ind]);
-                ganttChart.push(-1);
-            // }
-            
-            // ready.push(ind);
             t = arrivalTime[ind];
-            // ind++;
+            
         }
 
         while(ind < n && arrivalTime[ind] <= t)
@@ -149,21 +143,6 @@ function FCFS()
     displayResult();
     
 
-    // console.log("FCFS");
-    // for(var i = 0; i < n; i++)
-    // {
-    //     console.log("p " + i + " " + processID[i]);
-    // }
-
-    // for(var i = 0; i < n; i++)
-    // {
-    //     console.log(i + " at " + arrivalTime[i]);
-    // }
-
-    // for(var i = 0; i < n; i++)
-    // {
-    //     console.log(burstTime[i]);
-    // }   
 }
 
 function test()
@@ -200,16 +179,9 @@ function SJF()
     {
         if(ready.length == 0 && ind < n && arrivalTime[ind] > t)
         {
-            
-            // if(arrivalTime[ind] > t)
-            // {
-                timeline.push(arrivalTime[ind]);
-                ganttChart.push(-1);
-            // }
-            
-            // ready.push(ind);
+            timeline.push(arrivalTime[ind]);
+            ganttChart.push(-1);
             t = arrivalTime[ind];
-            // ind++;
         }
 
         while(ind < n && arrivalTime[ind] <= t)
@@ -240,23 +212,7 @@ function SJF()
 
     test();
 
-    displayResult();
-    
-    // console.log("SJF");
-    // for(var i = 0; i < n; i++)
-    // {
-    //     console.log(processID[i]);
-    // }
-
-    // for(var i = 0; i < n; i++)
-    // {
-    //     console.log(arrivalTime[i]);
-    // }
-
-    // for(var i = 0; i < n; i++)
-    // {
-    //     console.log(burstTime[i]);
-    // }   
+    displayResult();  
 }
 
 function SRTF()
@@ -274,16 +230,9 @@ function SRTF()
     {
         if(ready.length == 0 && ind < n && arrivalTime[ind] > t)
         {
-            
-            // if(arrivalTime[ind] > t)
-            // {
-                timeline.push(arrivalTime[ind]);
-                ganttChart.push(-1);
-            // }
-            
-            // ready.push(ind);
+            timeline.push(arrivalTime[ind]);
+            ganttChart.push(-1);            
             t = arrivalTime[ind];
-            // ind++;
         }
 
         while(ind < n && arrivalTime[ind] <= t)
@@ -325,9 +274,6 @@ function SRTF()
             
         }
 
-        // burstTime[idx]--;
-        // t++;
-
         if(burstTime[idx] == 0)
         {
             timeline.push(t);
@@ -335,29 +281,13 @@ function SRTF()
             ganttChart.push(processID[idx]);
         }
         
-        
     }
 
-    test();
 
     displayResult();
 
 
-    // console.log("SRTF");
-    // for(var i = 0; i < n; i++)
-    // {
-    //     console.log(processID[i]);
-    // }
-
-    // for(var i = 0; i < n; i++)
-    // {
-    //     console.log(arrivalTime[i]);
-    // }
-
-    // for(var i = 0; i < n; i++)
-    // {
-    //     console.log(burstTime[i]);
-    // }   
+    
 }
 
 function RR()
@@ -377,16 +307,9 @@ function RR()
     {
         if(ready.length == 0 && ind < n && arrivalTime[ind] > t)
         {
-            
-            // if(arrivalTime[ind] > t)
-            // {
-                timeline.push(arrivalTime[ind]);
-                ganttChart.push(-1);
-            // }
-            
-            // ready.push(ind);
-            t = arrivalTime[ind];
-            // ind++;
+            timeline.push(arrivalTime[ind]);
+            ganttChart.push(-1);
+            t = arrivalTime[ind];   
         }
 
         while(ind < n && arrivalTime[ind] <= t)
@@ -422,25 +345,8 @@ function RR()
         }
     }
 
-    test();
 
     displayResult();
-
-    // console.log("RR");
-    // for(var i = 0; i < n; i++)
-    // {
-    //     console.log(processID[i]);
-    // }
-
-    // for(var i = 0; i < n; i++)
-    // {
-    //     console.log(arrivalTime[i]);
-    // }
-
-    // for(var i = 0; i < n; i++)
-    // {
-    //     console.log(burstTime[i]);
-    // }   
 }
 
 function testReady()
@@ -461,7 +367,6 @@ function sortAt()
         {
             if(arrivalTime[j] > arrivalTime[j + 1])
             {
-                // console.log(j + " sortAt " + j + 1);
                 var temp = arrivalTime[j];
                 arrivalTime[j] = arrivalTime[j + 1];
                 arrivalTime[j + 1] = temp;
@@ -494,22 +399,7 @@ function sortReadyBt()
         {
             if(burstTime[ready[j]] > burstTime[ready[j + 1]])
             {
-                // console.log(j + " sortAt " + j + 1);
-                // var temp = arrivalTime[j];
-                // arrivalTime[j] = arrivalTime[j + 1];
-                // arrivalTime[j + 1] = temp;
-
-                // temp = burstTime[j];
-                // burstTime[j] = burstTime[j + 1];
-                // burstTime[j + 1] = temp;
-
-                // temp = processID[j];
-                // processID[j] = processID[j + 1];
-                // processID[j + 1] = temp;
-
-                // temp = index[j];
-                // index[j] = index[j + 1];
-                // index[j + 1] = temp;
+                
 
                 var temp = ready[j];
                 ready[j] = ready[j + 1];
@@ -527,7 +417,6 @@ function sortInd()
         {
             if(index[j] > index[j + 1])
             {
-                // console.log(j + " sortAt " + j + 1);
                 var temp = arrivalTime[j];
                 arrivalTime[j] = arrivalTime[j + 1];
                 arrivalTime[j + 1] = temp;
@@ -611,7 +500,6 @@ function removeRow(event)
 
 function displayResult()
 {
-    // var procTable = document.querySelector("#processTable");
     sortInd();
     var output = document.querySelector("#display");
     output.innerHTML = "";
@@ -643,7 +531,6 @@ function displayResult()
         var gtd = document.createElement("td");
         gtd.innerText = timeline[i];
         gtd.setAttribute("id","timeline");
-        // gtd.setAttribute("font-size","1px");
         gtr1.append(gtd);
     }
 
@@ -676,13 +563,10 @@ function displayResult()
     for(var i = 0; i < n; i++)
     {
         var tr = document.createElement("tr");
-        // var i = index[ii];
         for(var j = 0; j < resultHead.length; j++)
         {
             var td = document.createElement("td");
             var text;
-            // td.innerHTML=procTable.rows[i].cells[j].childNodes[0].value;
-            // console.log(i + " " + j + " " + td + " " + procTable.rows[i].cells[j].childNodes[0].value);
             if(j == 0)
             {
                 text = document.createTextNode(processID[i]);
@@ -711,12 +595,8 @@ function displayResult()
                 avgWT += waitingTime[i];
                 text = document.createTextNode(waitingTime[i]);
             }
-            // resultHead = ["Process ID", "Arrival Time", "Burst Time", "Completion Time", "Turn Around Time", "Waiting Time"];
-
-            // var text = document.createTextNode(procTable.rows[i].cells[j].childNodes[0].value);
             td.appendChild(text);
             tr.appendChild(td);
-            // var td2 = document.createElement("td");
             
         }
         result.appendChild(tr);
@@ -736,6 +616,4 @@ function displayResult()
     var wt = document.createElement('h5');
     wt.innerText = "Average Waiting Time is " + avgWT.toFixed(2) + " unit time";
     output.append(wt);
-
-    // getValues();
 }
