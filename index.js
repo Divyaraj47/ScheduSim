@@ -436,6 +436,10 @@ function sortInd()
                 temp = completionTime[j];
                 completionTime[j] = completionTime[j + 1];
                 completionTime[j + 1] = temp;
+
+                temp = dupBurstTIme[j];
+                dupBurstTIme[j] = dupBurstTIme[j + 1];
+                dupBurstTIme[j + 1] = temp;
             }
         }
     }
